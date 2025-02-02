@@ -3,46 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How Much Do I Love You?</title>
+    <title>Happy Valentine's Day, Grace</title>
     <style>
+        /* Basic styles */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
+            background-color: #f7f7f7;
+            color: #333;
             text-align: center;
             overflow: hidden;
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        /* Header section */
+        header {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 50px 0;
         }
 
-        .title {
-            font-size: 2.5rem;
-            color: #333;
+        header h1 {
+            font-size: 3rem;
             margin-bottom: 20px;
         }
 
-        button {
-            background-color: #ff4d4d;
-            color: white;
+        header p {
             font-size: 1.5rem;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            margin-top: 10px;
         }
 
-        button:hover {
-            background-color: #ff1a1a;
+        /* Heart & image section */
+        .heart-section {
+            margin-top: 50px;
         }
 
+        .heart {
+            font-size: 2rem;
+            color: #ff4d4d;
+            padding: 20px;
+        }
+
+        .heart img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        /* Interactive "so much" section */
         .popup {
             position: absolute;
             color: #ff4d4d;
@@ -62,36 +71,108 @@
                 transform: scale(1);
             }
         }
+
+        .popup-button {
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 40px;
+        }
+
+        .popup-button:hover {
+            background-color: #ff1a1a;
+        }
+
+        /* Footer section */
+        footer {
+            margin-top: 60px;
+            padding: 30px;
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Scrolling section */
+        .scroll-section {
+            margin-top: 100px;
+            padding: 50px 20px;
+        }
+
+        .scroll-section p {
+            font-size: 1.5rem;
+            color: #ff4d4d;
+            margin-bottom: 30px;
+        }
+
+        .scroll-section .scroll-box {
+            border: 2px solid #ff4d4d;
+            padding: 20px;
+            margin: 10px;
+            font-size: 2rem;
+            color: #ff4d4d;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .scroll-section .scroll-box:hover {
+            background-color: #ffcccc;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <p class="title">How much do I love you?</p>
-        <button onclick="generateLove()">Click to find out</button>
+    <header>
+        <h1>Happy Valentine's Day, Grace!</h1>
+        <p>I love you so much, my beautiful girl.</p>
+    </header>
+
+    <div class="heart-section">
+        <div class="heart">❤️</div>
+        <img src="your-photo1.jpg" alt="Photo of you and Grace">
+        <img src="your-photo2.jpg" alt="Another photo of you two">
     </div>
+
+    <div class="scroll-section">
+        <p>How much do I love you?</p>
+        <button class="popup-button" onclick="generateLove()">Click to find out</button>
+    </div>
+
+    <footer>
+        <p>I hope our love never ends, and we will be forever.</p>
+    </footer>
 
     <script>
         function generateLove() {
-            // Create a new "so much" element
             let loveText = document.createElement("div");
             loveText.classList.add("popup");
             loveText.textContent = "so much";
 
-            // Randomize the position of the text
+            // Randomize position
             let x = Math.random() * window.innerWidth;
             let y = Math.random() * window.innerHeight;
 
             loveText.style.left = `${x}px`;
             loveText.style.top = `${y}px`;
 
-            // Append to the body
+            // Append to body
             document.body.appendChild(loveText);
-
-            // Remove the loveText after animation to prevent cluttering
-            setTimeout(() => {
-                loveText.remove();
-            }, 1000); // Duration should match animation duration
         }
+
+        // Scroll box clicks
+        document.querySelectorAll('.scroll-box').forEach(item => {
+            item.addEventListener('click', () => {
+                item.textContent = "I love you so much more!";
+            });
+        });
     </script>
 </body>
 </html>
