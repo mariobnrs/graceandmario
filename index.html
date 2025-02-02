@@ -5,174 +5,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Valentine's Day, Grace</title>
     <style>
-        /* Basic styles */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: white;
+            color: red;
+        }
+
+        .header {
             text-align: center;
-            overflow: hidden;
-        }
-
-        /* Header section */
-        header {
-            background-color: #ff4d4d;
-            color: white;
-            padding: 50px 0;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        header p {
-            font-size: 1.5rem;
-            margin-top: 10px;
-        }
-
-        /* Heart & image section */
-        .heart-section {
-            margin-top: 50px;
-        }
-
-        .heart {
+            padding: 50px;
             font-size: 2rem;
-            color: #ff4d4d;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .images img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            background-color: red;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ff6666;
+            transform: translateY(-3px);
+        }
+
+        .words-container {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
             padding: 20px;
         }
 
-        .heart img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-            margin-top: 20px;
+        .word {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            animation: pop 0.3s ease;
         }
 
-        /* Interactive "so much" section */
-        .popup {
-            position: absolute;
-            color: #ff4d4d;
-            font-size: 2rem;
-            font-weight: bold;
-            pointer-events: none;
-            animation: popUpAnimation 1s ease-out forwards;
-        }
-
-        @keyframes popUpAnimation {
+        @keyframes pop {
             0% {
-                opacity: 0;
-                transform: scale(0.5);
+                transform: scale(0);
             }
             100% {
-                opacity: 1;
                 transform: scale(1);
             }
         }
 
-        .popup-button {
-            background-color: #ff4d4d;
+        .footer {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.5rem;
+            background-color: red;
             color: white;
-            font-size: 1.5rem;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 40px;
-        }
-
-        .popup-button:hover {
-            background-color: #ff1a1a;
-        }
-
-        /* Footer section */
-        footer {
-            margin-top: 60px;
-            padding: 30px;
-            background-color: #ff4d4d;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        /* Scrolling section */
-        .scroll-section {
-            margin-top: 100px;
-            padding: 50px 20px;
-        }
-
-        .scroll-section p {
-            font-size: 1.5rem;
-            color: #ff4d4d;
-            margin-bottom: 30px;
-        }
-
-        .scroll-section .scroll-box {
-            border: 2px solid #ff4d4d;
-            padding: 20px;
-            margin: 10px;
-            font-size: 2rem;
-            color: #ff4d4d;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .scroll-section .scroll-box:hover {
-            background-color: #ffcccc;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Happy Valentine's Day, Grace!</h1>
-        <p>I love you so much, my beautiful girl.</p>
-    </header>
-
-    <div class="heart-section">
-        <div class="heart">❤️</div>
-        <img src="your-photo1.jpg" alt="Photo of you and Grace">
-        <img src="your-photo2.jpg" alt="Another photo of you two">
+    <div class="header">happy valentines day grace :)</div>
+    <div class="content">
+        <div class="images">
+            <img src="image1.jpg" alt="Picture 1">
+            <img src="image2.jpg" alt="Picture 2">
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="showWords()">find out how much i love you</button>
+        </div>
     </div>
 
-    <div class="scroll-section">
-        <p>How much do I love you?</p>
-        <button class="popup-button" onclick="generateLove()">Click to find out</button>
+    <div class="words-container" id="wordsContainer">
+        <span class="word">forever</span>
+        <span class="word">infinitely</span>
+        <span class="word">everlasting</span>
+        <span class="word">immeasurable</span>
+        <span class="word">eternal</span>
+        <span class="word">infinite</span>
+        <span class="word">boundless</span>
+        <span class="word">unconditional</span>
+        <span class="word">undying</span>
+        <span class="word">limitless</span>
+        <span class="word">unfathomable</span>
+        <span class="word">enduring</span>
+        <span class="word">timeless</span>
+        <span class="word">unquantifiable</span>
+        <span class="word">unmeasurable</span>
+        <span class="word">incalculable</span>
+        <span class="word">abundant</span>
+        <span class="word">unwavering</span>
+        <span class="word">unchanging</span>
+        <span class="word">wholehearted</span>
+        <span class="word">unceasing</span>
+        <span class="word">immortal</span>
+        <span class="word">profound</span>
     </div>
 
-    <footer>
-        <p>I hope our love never ends, and we will be forever.</p>
-    </footer>
+    <div class="footer">I love you forever my beautiful girl - Mario</div>
 
     <script>
-        function generateLove() {
-            let loveText = document.createElement("div");
-            loveText.classList.add("popup");
-            loveText.textContent = "so much";
+        function showWords() {
+            const container = document.getElementById('wordsContainer');
+            container.style.display = 'flex';
 
-            // Randomize position
-            let x = Math.random() * window.innerWidth;
-            let y = Math.random() * window.innerHeight;
-
-            loveText.style.left = `${x}px`;
-            loveText.style.top = `${y}px`;
-
-            // Append to body
-            document.body.appendChild(loveText);
+            const word = document.createElement('span');
+            word.className = 'word';
+            word.textContent = getNewWord();
+            container.appendChild(word);
         }
 
-        // Scroll box clicks
-        document.querySelectorAll('.scroll-box').forEach(item => {
-            item.addEventListener('click', () => {
-                item.textContent = "I love you so much more!";
-            });
-        });
+        function getNewWord() {
+            const words = [
+                'forever', 'infinitely', 'everlasting', 'immeasurable', 'eternal', 'infinite', 'boundless', 'unconditional', 'undying',
+                'limitless', 'unfathomable', 'enduring', 'timeless', 'unquantifiable', 'unmeasurable', 'incalculable', 'abundant',
+                'unwavering', 'unchanging', 'wholehearted', 'unceasing', 'immortal', 'profound'
+            ];
+            return words[Math.floor(Math.random() * words.length)];
+        }
     </script>
 </body>
 </html>
