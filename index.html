@@ -11,125 +11,118 @@
             padding: 0;
             background-color: #f2f2f2;
             text-align: center;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day, Grace</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            text-align: center;
             overflow: hidden;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             position: relative;
         }
 
-        .title {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        button {
-            background-color: #ff4d4d;
-            color: white;
-            font-size: 1.5rem;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 20px;
-        }
-
-        button:hover {
-            background-color: #ff1a1a;
-        }
-
-        .popup {
-            position: absolute;
+        header {
             color: #ff4d4d;
+            padding: 50px 20px;
             font-size: 2rem;
-            font-weight: bold;
-            pointer-events: none;
-            animation: popUpAnimation 1s ease-out forwards;
+            text-transform: lowercase;
         }
 
-        @keyframes popUpAnimation {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .image-container {
             display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-bottom: 20px;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .image-container img {
             width: 200px;
             height: auto;
-            margin-right: 10px;
+            border-radius: 15px;
         }
 
-        .gif-container {
+        .button {
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .popup {
             position: absolute;
-            top: 10%;
-            right: 10%;
-            z-index: 10;
+            color: #ff4d4d;
+            background-color: white;
+            border: 2px solid #ff4d4d;
+            padding: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            z-index: 0;
         }
 
-        .gif-container img {
-            width: 300px;
-            height: auto;
+        .footer {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 50px;
+            font-size: 1.5rem;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <p class="title">How much do I love you?</p>
+    <header>
+        <h1>happy valentines day grace :)</h1>
+    </header>
+
+    <div class="content">
         <div class="image-container">
-            <!-- Example images -->
-            <img src="https://via.placeholder.com/200" alt="Image 1">
-            <img src="https://via.placeholder.com/200" alt="Image 2">
+            <img src="https://raw.githubusercontent.com/mariobnrs/graceandmario/main/IMG_6192.jpeg" alt="Photo of us">
+            <img src="https://raw.githubusercontent.com/mariobnrs/graceandmario/main/IMG_8925.jpeg" alt="Another photo of us">
         </div>
-        
-        <!-- GIF Container (this is where your GIF will appear) -->
-        <div class="gif-container">
-            <img src="https://via.placeholder.com/300x200.gif" alt="Love GIF">
-        </div>
-        
-        <button onclick="generateLove()">Click to find out</button>
+        <button class="button" onclick="generateLove()">find out how much I love you</button>
+    </div>
+
+    <div class="footer">
+        <p>I love you forever my beautiful girl - Mario</p>
     </div>
 
     <script>
         function generateLove() {
-            // Create a new "so much" element
+            const words = ["Immeasurably", "infinitely", "everlastingly", "immeasurably", "eternally", "infinitely", "boundlessly", "unconditionally", "undyingly", "everlastingly", "limitlessly", "unfathomably", "enduringly", "timelessly", "unquantifiably", "unmeasurably", "incalculably", "abundantly", "unwaveringly", "unchangingly", "wholeheartedly", "unceasingly", "immortally", "profoundly"];
             let loveText = document.createElement("div");
             loveText.classList.add("popup");
-            loveText.textContent = "so much";
+            loveText.textContent = words[Math.floor(Math.random() * words.length)];
 
-            // Randomize the position of the text
-            let x = Math.random() * window.innerWidth;
-            let y = Math.random() * window.innerHeight;
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 100);
 
             loveText.style.left = `${x}px`;
             loveText.style.top = `${y}px`;
 
-            // Append to the body
             document.body.appendChild(loveText);
-
-            // Remove the loveText after animation to prevent cluttering
-            setTimeout(() => {
-                loveText.remove();
-            }, 1000); // Duration should match animation duration
         }
     </script>
 </body>
 </html>
+
