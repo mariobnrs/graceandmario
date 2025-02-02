@@ -3,19 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How Much Do I Love You?</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-            text-align: center;
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Valentine's Day, Grace</title>
     <style>
         body {
@@ -49,6 +36,8 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            position: relative;
+            z-index: 1;
         }
 
         .image-container img {
@@ -65,6 +54,7 @@
             border: none;
             border-radius: 50px;
             cursor: pointer;
+            z-index: 2;
         }
 
         .popup {
@@ -75,8 +65,11 @@
             padding: 10px;
             font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 10px;
+            border-radius: 20px;
             z-index: 0;
+            opacity: 0;
+            transition: opacity 1s;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         .footer {
@@ -110,6 +103,7 @@
     <script>
         function generateLove() {
             const words = ["Immeasurably", "infinitely", "everlastingly", "immeasurably", "eternally", "infinitely", "boundlessly", "unconditionally", "undyingly", "everlastingly", "limitlessly", "unfathomably", "enduringly", "timelessly", "unquantifiably", "unmeasurably", "incalculably", "abundantly", "unwaveringly", "unchangingly", "wholeheartedly", "unceasingly", "immortally", "profoundly"];
+            
             let loveText = document.createElement("div");
             loveText.classList.add("popup");
             loveText.textContent = words[Math.floor(Math.random() * words.length)];
@@ -121,8 +115,12 @@
             loveText.style.top = `${y}px`;
 
             document.body.appendChild(loveText);
+
+            // Trigger the fade-in effect after appending the element
+            setTimeout(() => {
+                loveText.style.opacity = 1;
+            }, 10);
         }
     </script>
 </body>
 </html>
-
