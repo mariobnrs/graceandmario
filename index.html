@@ -3,70 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love</title>
+    <title>How Much Do I Love You?</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
             text-align: center;
-            padding: 20px;
-            background-color: #ffe6e6;
+            overflow: hidden;
         }
-        h1, h2 {
-            color: #d63384;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        #soMuchContainer {
-            margin-top: 20px;
+
+        .title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
         }
-        .soMuch {
-            display: inline-block;
-            font-size: 24px;
-            margin: 5px;
-            color: red;
-            animation: pop 0.3s ease-in-out;
+
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
-        @keyframes pop {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+
+        button:hover {
+            background-color: #ff1a1a;
         }
-        #nextSection {
-            display: none;
-            margin-top: 50px;
-            font-size: 22px;
-            color: #b30000;
+
+        .popup {
+            position: absolute;
+            color: #ff4d4d;
+            font-size: 2rem;
+            font-weight: bold;
+            pointer-events: none;
+            animation: popUpAnimation 1s ease-out forwards;
         }
-        .heart {
-            font-size: 30px;
-            color: red;
-            animation: heartbeat 1s infinite;
-        }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+
+        @keyframes popUpAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     </style>
 </head>
 <body>
-
-    <h1>I love you! ❤️</h1>
-    <h2>How much?</h2>
-    <button id="soMuchButton">So much</button>
-    <div id="soMuchContainer"></div>
-
-    <div id="nextSection">
-        <p>But words aren’t enough to express how much... ❤️ Keep scrolling...</p>
-        <p class="heart">❤️</p>
-        <p>[Your heartfelt love message goes here]</p>
+    <div class="container">
+        <p class="title">How much do I love you?</p>
+        <button onclick="generateLove()">Click to find out</button>
     </div>
 
     <script>
-        let count = 0;
-        const button = document.getElementById("soMuchButton");
-        const container = document.getElementById("soMuchContainer");
-        const nextSection = document.getElementById("nextSection");
+        function generateLove() {
+            // Create a new "so much" element
+            let loveText = document.createElement("div");
+            loveText.classList.add("popup");
+            loveText.textContent = "so much";
 
-        button.addEventListener("click", () => {
-            count++;
-            const newText = document.createElement("span");
-            newText.classList.add("soMuch");
-            newText.textContent = "So much";
-            container.appendChild(new
+            // Randomize the position of the text
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+
+            loveText.style.left = `${x}px`;
+            loveText.style.top = `${y}px`;
+
+            // Append to the body
+            document.body.appendChild(loveText);
+
+            // Remove the loveText after animation to prevent cluttering
+            setTimeout(() => {
+                loveText.remove();
+            }, 1000); // Duration should match animation duration
+        }
+    </script>
+</body>
+</html>
