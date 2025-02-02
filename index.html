@@ -6,157 +6,108 @@
     <title>Happy Valentine's Day, Grace</title>
     <style>
         body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: white;
-            color: red;
+            padding: 0;
+            background-color: #fff;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        .header {
-            text-align: center;
-            padding: 50px;
+        header {
+            color: #ff4d4d;
+            padding: 50px 20px;
             font-size: 2rem;
+            text-transform: lowercase;
         }
 
         .content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            gap: 20px;
             padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .images {
-            flex: 1;
+        .image-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 10px;
         }
 
-        .images img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .button-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .image-container img {
+            width: 200px;
+            height: auto;
+            border-radius: 15px;
         }
 
         .button {
-            background-color: red;
+            background-color: #ff4d4d;
             color: white;
-            padding: 20px 40px;
             font-size: 1.5rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #ff6666;
-            transform: translateY(-3px);
-        }
-
-        .words-container {
-            display: none;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
-        }
-
-        .word {
-            background-color: red;
-            color: white;
             padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 8px;
-            animation: pop 0.3s ease;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
         }
 
-        @keyframes pop {
-            0% {
-                transform: scale(0);
-            }
-            100% {
-                transform: scale(1);
-            }
+        .popup {
+            position: absolute;
+            color: #ff4d4d;
+            background-color: white;
+            border: 2px solid #ff4d4d;
+            padding: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            z-index: 0;
         }
 
         .footer {
-            text-align: center;
+            background-color: #ff4d4d;
+            color: white;
             padding: 50px;
             font-size: 1.5rem;
-            background-color: red;
-            color: white;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-    <div class="header">happy valentines day grace :)</div>
+    <header>
+        <h1>happy valentines day grace :)</h1>
+    </header>
+
     <div class="content">
-        <div class="images">
-            <img src="image1.jpg" alt="Picture 1">
-            <img src="image2.jpg" alt="Picture 2">
+        <div class="image-container">
+            <img src="https://raw.githubusercontent.com/mariobnrs/graceandmario/main/IMG_6192.jpeg" alt="Photo of us">
+            <img src="https://raw.githubusercontent.com/mariobnrs/graceandmario/main/IMG_8925.jpeg" alt="Another photo of us">
         </div>
-        <div class="button-container">
-            <button class="button" onclick="showWords()">find out how much i love you</button>
-        </div>
+        <button class="button" onclick="generateLove()">find out how much I love you</button>
     </div>
 
-    <div class="words-container" id="wordsContainer">
-        <span class="word">forever</span>
-        <span class="word">infinitely</span>
-        <span class="word">everlasting</span>
-        <span class="word">immeasurable</span>
-        <span class="word">eternal</span>
-        <span class="word">infinite</span>
-        <span class="word">boundless</span>
-        <span class="word">unconditional</span>
-        <span class="word">undying</span>
-        <span class="word">limitless</span>
-        <span class="word">unfathomable</span>
-        <span class="word">enduring</span>
-        <span class="word">timeless</span>
-        <span class="word">unquantifiable</span>
-        <span class="word">unmeasurable</span>
-        <span class="word">incalculable</span>
-        <span class="word">abundant</span>
-        <span class="word">unwavering</span>
-        <span class="word">unchanging</span>
-        <span class="word">wholehearted</span>
-        <span class="word">unceasing</span>
-        <span class="word">immortal</span>
-        <span class="word">profound</span>
+    <div class="footer">
+        <p>I love you forever my beautiful girl - Mario</p>
     </div>
-
-    <div class="footer">I love you forever my beautiful girl - Mario</div>
 
     <script>
-        function showWords() {
-            const container = document.getElementById('wordsContainer');
-            container.style.display = 'flex';
+        function generateLove() {
+            const words = ["Immeasurably", "infinitely", "everlastingly", "immeasurably", "eternally", "infinitely", "boundlessly", "unconditionally", "undyingly", "everlastingly", "limitlessly", "unfathomably", "enduringly", "timelessly", "unquantifiably", "unmeasurably", "incalculably", "abundantly", "unwaveringly", "unchangingly", "wholeheartedly", "unceasingly", "immortally", "profoundly"];
+            let loveText = document.createElement("div");
+            loveText.classList.add("popup");
+            loveText.textContent = words[Math.floor(Math.random() * words.length)];
 
-            const word = document.createElement('span');
-            word.className = 'word';
-            word.textContent = getNewWord();
-            container.appendChild(word);
-        }
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 100);
 
-        function getNewWord() {
-            const words = [
-                'forever', 'infinitely', 'everlasting', 'immeasurable', 'eternal', 'infinite', 'boundless', 'unconditional', 'undying',
-                'limitless', 'unfathomable', 'enduring', 'timeless', 'unquantifiable', 'unmeasurable', 'incalculable', 'abundant',
-                'unwavering', 'unchanging', 'wholehearted', 'unceasing', 'immortal', 'profound'
-            ];
-            return words[Math.floor(Math.random() * words.length)];
+            loveText.style.left = `${x}px`;
+            loveText.style.top = `${y}px`;
+
+            document.body.appendChild(loveText);
         }
     </script>
 </body>
